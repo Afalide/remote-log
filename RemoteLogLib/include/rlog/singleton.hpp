@@ -4,7 +4,7 @@
 #include "rlog/commons.hpp"
 #include <cassert>
 
-RLOG_NAMESPACE
+RLOG_NAMESPACE_BEGIN
 
 template <typename T>
 class singleton

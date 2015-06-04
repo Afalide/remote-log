@@ -12,7 +12,7 @@
 //namespace definition
 
 #define RLOG_NS rlog
-#define RLOG_NAMESPACE namespace RLOG_NS {
+#define RLOG_NAMESPACE_BEGIN namespace RLOG_NS {
 #define RLOG_NAMESPACE_END }
 
 //user-friendly singleton declaration
