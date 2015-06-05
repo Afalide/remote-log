@@ -13,8 +13,6 @@
 
 #pragma comment(lib, "ws2_32.lib")
 
-RLOG_SINGLETON(RLOG_NS::init);
-
 RLOG_NS::init::init()
 {
     //initialize the winsock library (v2.2)
@@ -39,6 +37,8 @@ RLOG_NS::init::init()
             << HIBYTE(loaded_version) << ")" << std::endl;
         return;
     }
+
+    std::cout << "started winsock lib" << std::endl;
 
     ////create a socket
 
@@ -128,4 +128,5 @@ RLOG_NS::init::init()
 RLOG_NS::init::~init()
 {
     ::WSACleanup();
+    std::cout << "stopped winsock lib" << std::endl;
 }

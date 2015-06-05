@@ -5,14 +5,12 @@
 
 int main()
 {
-    new rlog::init;
-
     rlog::logclient log;
+    rlog::logclient log2;
 
     log << 123;
     log << 1.23f;
     log << "plop";
 
-    delete rlog::init::get_instance();
     return 0;
 }

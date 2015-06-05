@@ -9,7 +9,6 @@ RLOG_NAMESPACE_BEGIN
 template <typename T>
 class singleton
 {
-
     public:
 
     singleton();
@@ -41,22 +40,10 @@ template <typename T>
 T*
 singleton<T>::get_instance()
 {
-    //    if(NULL == _instance)
-    //        _instance = new T;
-
     return _instance;
 }
 
-//template <typename T>
-//void
-//singleton<T>::delete_instance()
-//{
-//    if(NULL == _instance)
-//        return;
-//
-//    delete _instance;
-//    _instance = NULL;
-//}
+template <typename T> T* singleton<T>::_instance = nullptr;
 
 RLOG_NAMESPACE_END
 
