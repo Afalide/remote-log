@@ -1,11 +1,15 @@
 
 #include <ws2tcpip.h>
 #include "rlog/client.hpp"
+#include "rlog/internal/resources_container.hpp"
 
 RLOG_NS::client::client(const char* ip, unsigned short port)
     : _socket(0)
-    , _resources(resources::get_instance())
+    , _res(nullptr)
+    //, _resources(resources::get_instance())
 {
+    _res = new resources_container;
+
     //create the client socket
 
     int ip_version    = AF_INET;      //ipv4
@@ -55,6 +59,12 @@ RLOG_NS::client::client(const char* ip, unsigned short port)
 
 RLOG_NS::client::~client()
 {
+    if(nullptr != _res)
+    {
+        delete _res;
+        _res = nullptr;
+    }
+
     if(0 != _socket)
     {
         ::closesocket(_socket);

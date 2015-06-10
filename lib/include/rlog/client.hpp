@@ -5,14 +5,16 @@
 #include <winsock2.h>
 #include <sstream>
 #include "rlog/common.hpp"
-#include "rlog/resources.hpp"
 
 RLOG_NS_BEGIN
+
+struct resources_container;
 
 class RLOG_API client
 {
     SOCKET _socket;
-    resources_p _resources;
+    //resources_p _resources;
+    resources_container* _res;
 
     template<typename T> void _send_std(const T& data)
     {

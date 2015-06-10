@@ -3,6 +3,7 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include "rlog/resources.hpp"
+#include "smartp/smartp.hpp"
 
 RLOG_NS::resources_p RLOG_NS::resources::_instance = nullptr;
 

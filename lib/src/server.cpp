@@ -2,14 +2,21 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include "rlog/server.hpp"
+#include "rlog/internal/resources_container.hpp"
 
 RLOG_NS::server::server()
-    : _res(resources::get_instance())
+    : _res(nullptr)
 {
+    _res = new resources_container;
 }
 
 RLOG_NS::server::~server()
 {
+    if(nullptr != _res)
+    {
+        delete _res;
+        _res = nullptr;
+    }
 }
 
 void RLOG_NS::server::listen(const char* ip, unsigned short port)
