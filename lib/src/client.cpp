@@ -140,3 +140,12 @@ RLOG_NS::client::operator<<(const void* data)
     _send_std(data);
     return *this;
 }
+
+RLOG_NS::client&
+RLOG_NS::client::operator<<(const wchar_t* data)
+{
+    std::wstring w(data);
+    std::string s(w.begin(), w.end());
+    _send(s);
+    return *this;
+}

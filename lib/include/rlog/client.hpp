@@ -40,6 +40,7 @@ public:
 
     client& operator<< (const char*);
     client& operator<< (const char&);
+    client& operator<< (const wchar_t*);
     client& operator<< (const int&);
     client& operator<< (const float&);
     client& operator<< (const void*);
