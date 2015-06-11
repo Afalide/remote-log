@@ -88,7 +88,7 @@ void RLOG_NS::server::listen(const char* ip, unsigned short port)
 
         if(NULL == client_socket)
         {
-            std::cout << " fail" << std::endl;
+            std::cout << " fail (code " << ::WSAGetLastError() << ")" << std::endl;
             continue;
         }
         else
@@ -113,12 +113,14 @@ void RLOG_NS::server::listen(const char* ip, unsigned short port)
             {
                 //std::cout << "failed (SOCKET_ERROR)(code " << ::WSAGetLastError() << ")" << std::endl;
                 std::cout << "::recv failed (SOCKET_ERROR)(code " << ::WSAGetLastError() << ")" << std::endl;
+                ::closesocket(client_socket);
                 break;
             }
             else if(0 == result)
             {
                 //std::cout << "failed (graceful close)" << std::endl;
                 std::cout << "::recv failed (graceful close)" << std::endl;
+                ::closesocket(client_socket);
                 break;
             }
             else
@@ -150,7 +152,6 @@ void RLOG_NS::server::listen(const char* ip, unsigned short port)
                 
                 std::cout << buf[i];
             }
-
         }
     }
 }
