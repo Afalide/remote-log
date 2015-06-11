@@ -75,7 +75,9 @@ void
 RLOG_NS::client::_send(std::string& str)
 {
     std::cout << "::send ";
-    int result = ::send(_socket, str.c_str(), (str.length() +1), 0);
+
+    int len = static_cast<int>(str.length()) +1;
+    int result = ::send(_socket, str.c_str(), len, 0);
     if(SOCKET_ERROR == result)
     {
         std::cout << "failed (SOCKET_ERROR)" << std::endl;
@@ -100,6 +102,9 @@ RLOG_NS::client::_send(std::string& str)
     //        std::cout << "recv failed with error: " << WSAGetLastError() << std::endl;
     //} while(result > 0);
 }
+
+const char
+RLOG_NS::client::endl[] = {'\r','\n'};
 
 RLOG_NS::client&
 RLOG_NS::client::operator<<(const char* data)

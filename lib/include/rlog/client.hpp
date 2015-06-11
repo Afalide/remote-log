@@ -13,7 +13,6 @@ struct resources_container;
 class RLOG_API client
 {
     SOCKET _socket;
-    //resources_p _resources;
     resources_container* _res;
 
     template<typename T> void _send_std(const T& data)
@@ -22,21 +21,20 @@ class RLOG_API client
         ss << data;
         std::string str = ss.str();
         _send(str);
-        //std::cout << "will send (&) : [" << str << "]" << std::endl;
     }
 
     template<typename T> void _send_std(const T* data)
     {
         std::stringstream ss;
-        ss << data;
+        ss << data; //displays pointer adress
         std::string str = ss.str();
         _send(str);
-        //std::cout << "will send (*) : [" << str << "]" << std::endl;
     }
 
     void _send(std::string& str);
 
 public:
+
     client(const char* ip, unsigned short port);
     virtual ~client();
 
@@ -45,6 +43,9 @@ public:
     client& operator<< (const int&);
     client& operator<< (const float&);
     client& operator<< (const void*);
+
+    static const char endl[];
+    
 };
 
 RLOG_NS_END

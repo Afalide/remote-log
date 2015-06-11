@@ -8,6 +8,7 @@ int main()
 
     cl << "toto";
     cl << 1.23f;
+    cl << cl.endl;
     cl << 123;
     cl << &cl;
 

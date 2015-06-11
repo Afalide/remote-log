@@ -13,7 +13,7 @@ struct RLOG_API resources_container
     resources_p res;
     
     resources_container();
-    virtual ~resources_container();    
+    virtual ~resources_container();
 };
 
 RLOG_NS_END

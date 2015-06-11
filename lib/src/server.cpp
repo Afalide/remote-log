@@ -105,7 +105,7 @@ void RLOG_NS::server::listen(const char* ip, unsigned short port)
         while(true)
         {
             ::memset(buf, 0, sizeof(buf));
-            ::Sleep(1000);
+            //::Sleep(10);
 
             //std::cout << "::recv ";
             int result = ::recv(client_socket, buf, sizeof(buf), 0);
@@ -144,7 +144,8 @@ void RLOG_NS::server::listen(const char* ip, unsigned short port)
             {
                 if('\0' == buf[i])
                 {
-                    buf[i] = '\n';
+                    continue;
+                    //buf[i] = '_';
                 }
                 
                 std::cout << buf[i];
