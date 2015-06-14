@@ -4,6 +4,7 @@
 
 #include <winsock2.h>
 #include <sstream>
+#include <inttypes.h>
 #include "rlog/common.hpp"
 
 RLOG_NS_BEGIN
@@ -35,17 +36,22 @@ class RLOG_API client
 
 public:
 
+    static const char endl[];
+
     client(const char* ip, unsigned short port);
     virtual ~client();
-
     client& operator<< (const char*);
     client& operator<< (const char&);
     client& operator<< (const wchar_t*);
     client& operator<< (const int&);
+    client& operator<< (const int64_t&);
+    client& operator<< (const uint64_t&);
     client& operator<< (const float&);
     client& operator<< (const void*);
 
-    static const char endl[];
+
+
+    
     
 };
 

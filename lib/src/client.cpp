@@ -121,6 +121,20 @@ RLOG_NS::client::operator<<(const char& data)
 }
 
 RLOG_NS::client&
+RLOG_NS::client::operator<<(const int64_t& data)
+{
+    _send_std(data);
+    return *this;
+}
+
+RLOG_NS::client&
+RLOG_NS::client::operator<<(const uint64_t& data)
+{
+    _send_std(data);
+    return *this;
+}
+
+RLOG_NS::client&
 RLOG_NS::client::operator<<(const int& data)
 {
     _send_std(data);
@@ -149,3 +163,4 @@ RLOG_NS::client::operator<<(const wchar_t* data)
     _send(s);
     return *this;
 }
+
